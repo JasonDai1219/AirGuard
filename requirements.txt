@@ -1,0 +1,8 @@
+streamlit>=1.37
+pandas
+numpy
+scikit-learn
+joblib
+openai
+plotly
+streamlit-aggrid
