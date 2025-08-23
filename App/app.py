@@ -127,12 +127,22 @@ def classify_listing_from_raw_input(user_input_raw, top_features, scaler, X_scal
     )
     abnormal_cutoff = float(np.percentile(own_distances, 95))
 
+    # 在返回结果前，先算 p_in_cluster
+    p_in_cluster = percentile_rank(
+        euclidean_distances(X_scaled[cluster_labels == closest_cluster],
+                            cluster_centers[closest_cluster].reshape(1, -1)).reshape(-1),
+        closest_distance
+    )
+
     if closest_distance > abnormal_cutoff:
         label_type = "anomaly"
+    elif p_in_cluster >= 80:   # 👈 新增逻辑
+        label_type = "rare"
     elif cluster_ratio < rare_threshold:
         label_type = "rare"
     else:
         label_type = "typical"
+
 
     return {
         "type": label_type,
@@ -140,7 +150,9 @@ def classify_listing_from_raw_input(user_input_raw, top_features, scaler, X_scal
         "cluster_size_ratio": round(float(cluster_ratio), 4),
         "distance_to_cluster_center": round(float(closest_distance), 4),
         "abnormal_cutoff": round(float(abnormal_cutoff), 4),
-        "all_cluster_distances": dict(sorted(cluster_distances.items(), key=lambda kv: kv[1]))
+        "all_cluster_distances": dict(sorted(cluster_distances.items(), key=lambda kv: kv[1])),
+        "percentile_in_cluster": round(float(p_in_cluster), 2)
+
     }
 
 # ============== 评估函数 ==============
