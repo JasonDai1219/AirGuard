@@ -2,6 +2,8 @@
 
 This project builds an interpretable anomaly detection system for Airbnb listings using unsupervised clustering techniques. In addition to traditional classification, we integrate a large language model (LLM) to generate human-readable explanations for each detection result, improving system transparency and user trust.
 
+## EDA 
+
 ## 📌 Key Features
 
 - **Unsupervised Anomaly Detection**: 
