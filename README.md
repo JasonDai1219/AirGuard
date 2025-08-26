@@ -86,6 +86,30 @@ This project builds an interpretable anomaly detection system for Airbnb listing
     instant_bookable VARCHAR);
   
 - **Data Cleaning**:
+  ### Data Cleaning Logic  
+
+  The SQL query below performs the following steps:  
+  
+  1. **Field Selection**  
+     - Chooses relevant columns such as `room_type`, `property_type`, `accommodates`, `bathrooms`, `bedrooms`, `beds`, etc.  
+     - Focuses on fields that are most useful for analysis.  
+  
+  2. **Data Cleaning**  
+     - **Price (`price_cleaned`)**: Removes `$` and `,`, then converts to `FLOAT`.  
+     - **Host Acceptance Rate (`host_acceptance_rate_cleaned`)**: Strips `%` and converts to numeric.  
+     - **Reviews per Month (`reviews_per_month_cleaned`)**: Casts directly to numeric.  
+  
+  3. **Filtering Rules**  
+     - Excludes rows where `room_type` or `price` is missing.  
+     - Removes records where `host_acceptance_rate` is empty or set to `'N/A'`.  
+     - Keeps only listings with positive prices (`> 0`).  
+  
+  4. **Row Indexing**  
+     - Adds a unique sequential row number (`row_index`) using  
+       `ROW_NUMBER() OVER (ORDER BY price_cleaned)` for easier sorting and referencing.  
+  
+  After these transformations, the result is a **cleaned dataset** ready for Exploratory Data Analysis (EDA) and visualization.  
+
   ```sql
   WITH t1 AS (
   SELECT
