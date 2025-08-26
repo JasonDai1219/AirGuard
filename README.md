@@ -141,6 +141,9 @@ This project builds an interpretable anomaly detection system for Airbnb listing
   FROM t1;
 
 - **Data Visualization**:
+  -   Host Listing Distribution
+  ![Host Listing Distribution](Host_Listing_Distribution.png)
+
 
 ## Key Features
 
