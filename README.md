@@ -153,7 +153,7 @@ This project builds an interpretable anomaly detection system for Airbnb listing
   - Host Listing Distribution
   ![Host Listing Distribution](Host_Listing_Distribution.png)
 
-  - Superhost
+  - Superhost Percentages
   ![Superhost Distribution](superhost_percentage.png)
 
   - Accomodates and Bathrooms Boxplot
