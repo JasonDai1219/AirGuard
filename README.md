@@ -83,9 +83,7 @@ This project builds an interpretable anomaly detection system for Airbnb listing
     calculated_host_listings_count_private_rooms VARCHAR,
     calculated_host_listings_count_shared_rooms VARCHAR,
     reviews_per_month VARCHAR,
-    instant_bookable VARCHAR
-);
-```
+    instant_bookable VARCHAR);```
 
 ## Key Features
 
