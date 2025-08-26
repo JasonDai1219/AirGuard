@@ -140,9 +140,9 @@ This project builds an interpretable anomaly detection system for Airbnb listing
     ROW_NUMBER() OVER (ORDER BY price_cleaned) AS row_index, t1.*
   FROM t1;
 
-- **Data Visualization**:
+- **Data Visualizations**:
 
-| Visualization | Chart |
+| Description | Visualization |
 |---------------|-------|
 | Number of Accommodates | ![Number of Accommodates](Number_of_Accomodates.png) |
 | Room Type Distribution | ![Room Type Distribution](Room_Type_Distribution.png) |
