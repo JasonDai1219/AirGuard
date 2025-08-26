@@ -83,7 +83,42 @@ This project builds an interpretable anomaly detection system for Airbnb listing
     calculated_host_listings_count_private_rooms VARCHAR,
     calculated_host_listings_count_shared_rooms VARCHAR,
     reviews_per_month VARCHAR,
-    instant_bookable VARCHAR);```
+    instant_bookable VARCHAR);
+  
+- **Data Cleaning**:
+  ```sql
+  WITH t1 AS (
+  SELECT
+    room_type,
+    property_type,
+    accommodates,
+    bathrooms,
+    bedrooms,
+    beds,
+    TRY_CAST(REPLACE(REPLACE(price, '$', ''), ',', '') AS FLOAT) AS price_cleaned,
+    minimum_nights,
+    maximum_nights,
+    availability_365,
+    host_is_superhost,
+    host_listings_count,
+    instant_bookable,
+    TRY_CAST(REPLACE(host_acceptance_rate, '%', '') AS FLOAT) AS host_acceptance_rate_cleaned,
+    latitude,
+    longitude,
+    TRY_CAST(reviews_per_month AS FLOAT) AS reviews_per_month_cleaned
+  FROM listings_nyc
+  WHERE 
+    room_type IS NOT NULL
+    AND price IS NOT NULL
+    AND host_acceptance_rate IS NOT NULL
+    AND host_acceptance_rate NOT IN ('', 'N/A')
+    AND TRY_CAST(REPLACE(REPLACE(price, '$', ''), ',', '') AS FLOAT) > 0
+)
+SELECT 
+  ROW_NUMBER() OVER (ORDER BY price_cleaned) AS row_index, t1.*
+FROM t1;
+
+- **Data Visualization**:
 
 ## Key Features
 
