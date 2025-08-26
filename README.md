@@ -112,11 +112,10 @@ This project builds an interpretable anomaly detection system for Airbnb listing
     AND price IS NOT NULL
     AND host_acceptance_rate IS NOT NULL
     AND host_acceptance_rate NOT IN ('', 'N/A')
-    AND TRY_CAST(REPLACE(REPLACE(price, '$', ''), ',', '') AS FLOAT) > 0
-)
-SELECT 
-  ROW_NUMBER() OVER (ORDER BY price_cleaned) AS row_index, t1.*
-FROM t1;
+    AND TRY_CAST(REPLACE(REPLACE(price, '$', ''), ',', '') AS FLOAT) > 0)
+  SELECT 
+    ROW_NUMBER() OVER (ORDER BY price_cleaned) AS row_index, t1.*
+  FROM t1;
 
 - **Data Visualization**:
 
