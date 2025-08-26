@@ -86,7 +86,7 @@ This project builds an interpretable anomaly detection system for Airbnb listing
     instant_bookable VARCHAR);
   
 - **Data Cleaning**:
-  Data Cleaning Logic  
+   
   The SQL query below performs the following steps:  
   
   1. **Field Selection**  
