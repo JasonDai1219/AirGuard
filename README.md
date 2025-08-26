@@ -181,6 +181,26 @@ This project builds an interpretable anomaly detection system for Airbnb listing
   ![Price Distribution Based on Number of Bathrooms](Price_Distribution_Based_on_Bathroom.png)
 
 
+## 📊 Data Visualization  
+
+| Visualization | Chart |
+|---------------|-------|
+| Number of Accommodates | ![Number of Accommodates](Number_of_Accomodates.png) |
+| Room Type Distribution | ![Room Type Distribution](Room_Type_Distribution.png) |
+| Property Type Distribution | ![Property Type Distribution](Property_Type_Distribution.png) |
+| Host Listing Distribution | ![Host Listing Distribution](Host_Listing_Distribution.png) |
+| Superhost Percentages | ![Superhost Distribution](superhost_percentage.png) |
+| Accommodates and Bathrooms Boxplot | ![Accommodates and Bathrooms Boxplot](Accommodates_Bathroom_Boxplot.png) |
+| Available Days in One Year | ![Available Days in One Year](Availability365.png) |
+| Instant Bookable Percentages | ![Instant Bookable Percentages](Instant_Bookable_percentage.png) |
+| Instant Bookable Map | ![Instant Bookable Map](Instant_Bookable_map.png) |
+| Price vs Minimum Nights Stay | ![Price VS Minimum Nights Stay](Price_VS_Min_Nights.png) |
+| Price vs Availability | ![Price VS Availability](Price_And_Availability.png) |
+| Host Listing Count vs Acceptance Rate | ![Host Listing VS Acceptance Rate](Host_listing_And_Acceptance_rate.png) |
+| Price Distribution Based on Number of Bathrooms | ![Price Distribution Based on Number of Bathrooms](Price_Distribution_Based_on_Bathroom.png) |
+
+
+
 ## Key Features
 
 - **Unsupervised Anomaly Detection**: 
