@@ -3,8 +3,91 @@
 This project builds an interpretable anomaly detection system for Airbnb listings using unsupervised clustering techniques. In addition to traditional classification, we integrate a large language model (LLM) to generate human-readable explanations for each detection result, improving system transparency and user trust.
 
 ## EDA 
+- **Table Creation**:
+  ```sql
+  CREATE OR REPLACE TABLE listings_nyc (
+    id INTEGER,
+    listing_url VARCHAR,
+    scrape_id VARCHAR,
+    last_scraped VARCHAR,
+    source VARCHAR,
+    name VARCHAR,
+    description VARCHAR,
+    neighborhood_overview VARCHAR,
+    picture_url VARCHAR,
+    host_id VARCHAR,
+    host_url VARCHAR,
+    host_name VARCHAR,
+    host_since VARCHAR,
+    host_location VARCHAR,
+    host_about VARCHAR,
+    host_response_time VARCHAR,
+    host_response_rate VARCHAR,
+    host_acceptance_rate VARCHAR,
+    host_is_superhost VARCHAR,
+    host_thumbnail_url VARCHAR,
+    host_picture_url VARCHAR,
+    host_neighbourhood VARCHAR,
+    host_listings_count FLOAT,
+    host_total_listings_count FLOAT,
+    host_verifications VARCHAR,
+    host_has_profile_pic VARCHAR,
+    host_identity_verified VARCHAR,
+    neighbourhood VARCHAR,
+    neighbourhood_cleansed VARCHAR,
+    neighbourhood_group_cleansed VARCHAR,
+    latitude FLOAT,
+    longitude FLOAT,               
+    property_type VARCHAR,
+    room_type VARCHAR,
+    accommodates INTEGER,
+    bathrooms FLOAT,
+    bathrooms_text VARCHAR,
+    bedrooms FLOAT,
+    beds FLOAT,
+    amenities VARCHAR,
+    price VARCHAR,
+    minimum_nights INTEGER,
+    maximum_nights INTEGER,
+    minimum_minimum_nights INTEGER,
+    maximum_minimum_nights INTEGER,
+    minimum_maximum_nights INTEGER,
+    maximum_maximum_nights INTEGER,
+    minimum_nights_avg_ntm FLOAT,
+    maximum_nights_avg_ntm FLOAT,
+    calendar_updated VARCHAR,
+    has_availability VARCHAR,
+    availability_30 INTEGER,
+    availability_60 INTEGER,
+    availability_90 INTEGER,
+    availability_365 INTEGER,
+    calendar_last_scraped VARCHAR,
+    number_of_reviews INTEGER,
+    number_of_reviews_ltm INTEGER,
+    number_of_reviews_l30d INTEGER,
+    availability_eoy INTEGER,
+    number_of_reviews_ly INTEGER,
+    estimated_occupancy_l365d INTEGER,
+    first_review VARCHAR,
+    last_review VARCHAR,
+    review_scores_rating FLOAT,
+    review_scores_accuracy FLOAT,
+    review_scores_cleanliness FLOAT,
+    review_scores_checkin FLOAT,
+    review_scores_communication FLOAT,
+    review_scores_location FLOAT,
+    review_scores_value FLOAT,
+    license VARCHAR,
+    calculated_host_listings_count VARCHAR,
+    calculated_host_listings_count_entire_homes VARCHAR,
+    calculated_host_listings_count_private_rooms VARCHAR,
+    calculated_host_listings_count_shared_rooms VARCHAR,
+    reviews_per_month VARCHAR,
+    instant_bookable VARCHAR
+);
+```
 
-## 📌 Key Features
+## Key Features
 
 - **Unsupervised Anomaly Detection**: 
   - Uses DBSCAN for clustering
@@ -26,7 +109,7 @@ This project builds an interpretable anomaly detection system for Airbnb listing
     This listing is classified as an anomaly because it has a very high price ($980) and an unusually high number of bedrooms (8) for a small accommodation capacity (2). It also differs significantly from nearby cluster members in availability and host activity.
     ```
 
-## 🧠 System Workflow
+## System Workflow
 
 1. **Data Preprocessing**: Handle missing values, derive log-transformed and ratio-based features, one-hot encode categorical variables.
 2. **Initial Clustering**: PCA + DBSCAN to label listings and initialize clusters.
@@ -39,7 +122,7 @@ This project builds an interpretable anomaly detection system for Airbnb listing
 6. **Natural Language Explanation (Optional)**:
     - Listing’s features + cluster deviation are passed to an LLM (e.g., GPT-4) to generate a detailed explanation.
 
-## 🛠️ Requirements
+## Requirements
 
 - Python 3.8+
 - scikit-learn
@@ -48,7 +131,7 @@ This project builds an interpretable anomaly detection system for Airbnb listing
 - openai (for LLM explanation)
 - seaborn / matplotlib (optional for visualization)
 
-## 🚀 Usage
+## Usage
 
 ```python
 from model import classify_listing_from_raw_input
